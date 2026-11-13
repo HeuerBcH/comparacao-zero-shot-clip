@@ -1,0 +1,260 @@
+{
+  "configuracao": {
+    "dataset": "CIFAR-100 (teste) com shift de domínio sintético",
+    "modelo": "openai/clip-vit-base-patch32",
+    "dispositivo": "cpu",
+    "n_simulacoes": 30,
+    "imagens_por_rodada": 500,
+    "amostras_por_classe": 5,
+    "sementes": [
+      1,
+      30
+    ],
+    "alpha": 0.05,
+    "shifts": {
+      "ruido_gaussiano_sigma": 0.08,
+      "desfoque_gaussiano_sigma": 0.7,
+      "fator_contraste": 0.4,
+      "esboco": "magnitude de Sobel invertida"
+    },
+    "templates": {
+      "H0": [
+        "a photo of a {}."
+      ],
+      "H1": [
+        "a photo of a {}.",
+        "a blurry photo of a {}.",
+        "a sketch of a {}.",
+        "a low contrast photo of a {}.",
+        "a cropped photo of a {}.",
+        "a bright photo of a {}.",
+        "a dark photo of a {}.",
+        "a painting of a {}."
+      ]
+    }
+  },
+  "metricas": {
+    "acuracia_top1": {
+      "n_pares": 30,
+      "H0": {
+        "media": 0.2821333333333333,
+        "desvio_padrao": 0.02141822191231236,
+        "mediana": 0.282,
+        "q1": 0.2725,
+        "q3": 0.2955,
+        "iqr": 0.022999999999999965,
+        "minimo": 0.212,
+        "maximo": 0.32
+      },
+      "H1": {
+        "media": 0.2862666666666667,
+        "desvio_padrao": 0.020414554195193817,
+        "mediana": 0.287,
+        "q1": 0.276,
+        "q3": 0.302,
+        "iqr": 0.025999999999999968,
+        "minimo": 0.224,
+        "maximo": 0.322
+      },
+      "diferenca_H1_menos_H0": {
+        "media": 0.004133333333333337,
+        "desvio_padrao": 0.008865793751863095,
+        "mediana": 0.006000000000000005,
+        "q1": -0.0020000000000000018,
+        "q3": 0.010000000000000009,
+        "iqr": 0.01200000000000001,
+        "minimo": -0.01200000000000001,
+        "maximo": 0.01799999999999996
+      },
+      "ic95_media_diferenca": [
+        0.0008227915391560373,
+        0.007443875127510637
+      ],
+      "rodadas_H1_maior": 18,
+      "rodadas_empate": 2,
+      "rodadas_H0_maior": 10,
+      "shapiro_wilk": {
+        "W": 0.9505131658815771,
+        "p_valor": 0.17449390198762654,
+        "normal": true
+      },
+      "teste": "t de Student pareado",
+      "estatistica": 2.5535445192134536,
+      "p_valor": 0.016183038365391048,
+      "alpha": 0.05,
+      "rejeita_H0": true,
+      "cohen_d_pareado": 0.4662113115889642
+    },
+    "f1_macro": {
+      "n_pares": 30,
+      "H0": {
+        "media": 0.27585583602035146,
+        "desvio_padrao": 0.020223495784947566,
+        "mediana": 0.277135322458899,
+        "q1": 0.2661775827638119,
+        "q3": 0.288597822489831,
+        "iqr": 0.022420239726019087,
+        "minimo": 0.2166378569954421,
+        "maximo": 0.3121993133559629
+      },
+      "H1": {
+        "media": 0.28066719111834,
+        "desvio_padrao": 0.020245829541435258,
+        "mediana": 0.2810637662990604,
+        "q1": 0.2668457252169112,
+        "q3": 0.2961445054894692,
+        "iqr": 0.029298780272558,
+        "minimo": 0.22793672826855488,
+        "maximo": 0.3209115746615747
+      },
+      "diferenca_H1_menos_H0": {
+        "media": 0.004811355097988503,
+        "desvio_padrao": 0.009010566067877921,
+        "mediana": 0.005829736822313525,
+        "q1": -0.001510343838699607,
+        "q3": 0.012227474834779692,
+        "iqr": 0.013737818673479299,
+        "minimo": -0.012782855617275823,
+        "maximo": 0.01812114792672065
+      },
+      "ic95_media_diferenca": [
+        0.0014467544325785842,
+        0.008175955763398423
+      ],
+      "rodadas_H1_maior": 19,
+      "rodadas_empate": 0,
+      "rodadas_H0_maior": 11,
+      "shapiro_wilk": {
+        "W": 0.9520830962105838,
+        "p_valor": 0.19217894618620185,
+        "normal": true
+      },
+      "teste": "t de Student pareado",
+      "estatistica": 2.9246638884657985,
+      "p_valor": 0.00663043720996522,
+      "alpha": 0.05,
+      "rejeita_H0": true,
+      "cohen_d_pareado": 0.5339681282778304
+    },
+    "tempo_inferencia_ms_img": {
+      "n_pares": 30,
+      "H0": {
+        "media": 24.01726031328241,
+        "desvio_padrao": 1.508659627067673,
+        "mediana": 23.949364100350067,
+        "q1": 23.04123889969196,
+        "q3": 24.671370949945413,
+        "iqr": 1.6301320502534509,
+        "minimo": 20.175777200143784,
+        "maximo": 26.484465199988335
+      },
+      "H1": {
+        "media": 24.024968766700475,
+        "desvio_padrao": 1.605737501905235,
+        "mediana": 23.576951200142503,
+        "q1": 23.129892149940133,
+        "q3": 25.142547699972056,
+        "iqr": 2.0126555500319228,
+        "minimo": 20.422169600147754,
+        "maximo": 28.69467999972403
+      },
+      "diferenca_H1_menos_H0": {
+        "media": 0.007708453418066104,
+        "desvio_padrao": 0.9289604177288505,
+        "mediana": -0.008515199646353722,
+        "q1": -0.51510059973225,
+        "q3": 0.6158933499827981,
+        "iqr": 1.130993949715048,
+        "minimo": -2.670473599806428,
+        "maximo": 2.210214799735695
+      },
+      "ic95_media_diferenca": [
+        -0.33917106736725483,
+        0.354587974203387
+      ],
+      "rodadas_H1_maior": 15,
+      "rodadas_empate": 0,
+      "rodadas_H0_maior": 15,
+      "shapiro_wilk": {
+        "W": 0.9684238729710778,
+        "p_valor": 0.4970001352665487,
+        "normal": true
+      },
+      "teste": "t de Student pareado",
+      "estatistica": 0.0454496633007777,
+      "p_valor": 0.9640604275819991,
+      "alpha": 0.05,
+      "rejeita_H0": false,
+      "cohen_d_pareado": 0.008297935273616884
+    },
+    "tempo_classificador_s": {
+      "n_pares": 30,
+      "H0": {
+        "media": 0.2856406499786923,
+        "desvio_padrao": 0.22281686746418372,
+        "mediana": 0.24344005004968494,
+        "q1": 0.23219012515619397,
+        "q3": 0.2578963249688968,
+        "iqr": 0.025706199812702835,
+        "minimo": 0.21148100006394088,
+        "maximo": 1.4606411000713706
+      },
+      "H1": {
+        "media": 2.1353930133317287,
+        "desvio_padrao": 0.13512195930529974,
+        "mediana": 2.147565899998881,
+        "q1": 2.048232974950224,
+        "q3": 2.2389777999487706,
+        "iqr": 0.1907448249985464,
+        "minimo": 1.844635299872607,
+        "maximo": 2.3897794000804424
+      },
+      "diferenca_H1_menos_H0": {
+        "media": 1.8497523633530364,
+        "desvio_padrao": 0.23453059227046424,
+        "mediana": 1.8976439000107348,
+        "q1": 1.7876598499715328,
+        "q3": 1.9633188750012778,
+        "iqr": 0.17565902502974495,
+        "minimo": 0.7875423999503255,
+        "maximo": 2.1506908000446856
+      },
+      "ic95_media_diferenca": [
+        1.7621772009417331,
+        1.9373275257643396
+      ],
+      "rodadas_H1_maior": 30,
+      "rodadas_empate": 0,
+      "rodadas_H0_maior": 0,
+      "shapiro_wilk": {
+        "W": 0.6863541889357827,
+        "p_valor": 9.936698011007242e-07,
+        "normal": false
+      },
+      "teste": "Wilcoxon pareado (postos sinalizados)",
+      "estatistica": 0.0,
+      "p_valor": 1.862645149230957e-09,
+      "alpha": 0.05,
+      "rejeita_H0": true,
+      "cohen_d_pareado": 7.887040856571384
+    }
+  },
+  "acuracia_media_por_shift": {
+    "ruido_gaussiano": {
+      "H0": 0.2216179105134999,
+      "H1": 0.22339175428207028
+    },
+    "desfoque_gaussiano": {
+      "H0": 0.46727455484851155,
+      "H1": 0.47083789639560236
+    },
+    "cinza_baixo_contraste": {
+      "H0": 0.3163285607344177,
+      "H1": 0.3251285656624316
+    },
+    "esboco": {
+      "H0": 0.12053164641266247,
+      "H1": 0.1230139567576818
+    }
+  }
+}
