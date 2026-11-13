@@ -1,0 +1,1 @@
+# comparacao-zero-shot-clip
